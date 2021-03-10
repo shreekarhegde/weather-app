@@ -1,0 +1,35 @@
+<div 
+	class="mx-auto mt-5" 
+	[class.haze]="haze" 
+	[class.rainy]="rainy"
+	[class.sunny]="sunny"
+	[class.snow]="snow" 
+	style="width: 600px;"
+>
+	<h1 class="text-center pt-5">Welcome to Weather App!</h1>
+	<div class="container mt-5">
+		<form 
+		#f="ngForm" (ngSubmit)="onSubmit(f)"
+			class="example text-center" 
+		>
+			<input type="text" 
+				name="location" 
+				(ngModel)="location" 
+				type="text" 
+				placeholder="Enter a Location"
+			>
+			<button type="submit"><i class="fa fa-search"></i></button>
+		  </form>
+	</div>
+	<div class="mt-5 ml-5" *ngIf="loading">
+		Fetching details...
+	</div>
+	<div class="mt-5" *ngIf="temperature && !loading">
+		<h3 class="text-center">Temparature in <b>{{location}}</b> is <b>{{temperature}}</b> C.</h3>
+	</div>
+	<div class="mt-5" *ngIf="errMsg && !loading">
+		<h3 class="text-center">{{errMsg}}</h3>
+	</div>
+</div>
+
+
