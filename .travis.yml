@@ -2,8 +2,8 @@ sudo: required
 services:
   - docker  
 script:
-  - docker build -t shreekarhegde/frontend -f Dockerfile.dev .
-  
+  - docker build -t shreekarhegde/frontend .
+
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
