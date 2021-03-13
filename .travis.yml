@@ -1,12 +1,16 @@
-language: node_js
-node_js:
-  - "14"
-dist: trusty
 sudo: required
-branches:
-  only:
-  - master
-before_script:
-  - npm install -g @angular/cli
-script:
-- ng build --prod --base-href https://github.com/shreekarhegde/weather-app.git
+services:
+  - docker
+before_install:
+  - docker build -t shreekarhegde/frontend -f Dockerfile.dev .
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "weather"
+  env: "Weather-env"
+  bucket_name: "elasticbeanstalk-us-east-2-047565902808"
+  bucket_path: "weather"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
