@@ -1,5 +1,17 @@
 sudo: required
 services:
-  - docker
-before_install:
+  - docker  
+script:
   - docker build -t shreekarhegde/frontend -f Dockerfile.dev .
+  
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "weather"
+  env: "Weather-env"
+  bucket_name: "elasticbeanstalk-us-east-2-047565902808"
+  bucket_path: "weather"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
