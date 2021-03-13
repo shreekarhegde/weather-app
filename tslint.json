@@ -8,7 +8,8 @@
       "options": [
         "parameters",
         "statements"
-      ]
+      ],
+      "radix": false
     },
     "array-type": false,
     "arrow-return-shorthand": true,

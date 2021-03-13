@@ -9,7 +9,7 @@ const url = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=
 export class HttpService {
   constructor(private http: HttpClient) {}
 
-  get(location: string): Observable<Object> {
+  get(location: string): Observable<object> {
     return this.http.get(url + location);
   }
 }
