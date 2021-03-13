@@ -1,9 +1,10 @@
 sudo: required
+dist: trusty
+language: node_js
 services:
   - docker
 before_install: 
-  - gem install bundler --pre
-  - docker build -t shreekarhegde/weather-app -f Dockerfile.dev .
+  - docker build -t shreekarhegde/frontend -f Dockerfile.dev .
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
