@@ -1,7 +1,8 @@
 sudo: required
 services:
   - docker
-before_install:
+before_install: 
+  - gem install bundler --pre
   - docker build -t shreekarhegde/weather-app -f Dockerfile.dev .
 deploy:
   provider: elasticbeanstalk
