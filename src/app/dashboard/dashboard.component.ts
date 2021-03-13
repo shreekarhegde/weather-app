@@ -53,6 +53,7 @@ export class DashboardComponent implements OnInit {
         }
       },
       (err) => {
+        console.log('err: get', err);
         this.temperature = '';
         this.loading = false;
         this.errMsg = 'Sorry! No information found.';
