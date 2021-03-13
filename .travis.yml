@@ -4,7 +4,7 @@ services:
 before_install:
   - docker build -t shreekarhegde/frontend -f Dockerfile.dev .
 script:
-  - docker run -e CI=true shreekarhegde/frontend
+  - docker run -e CI=true shreekarhegde/frontend -- --coverage
 
 deploy:
   provider: elasticbeanstalk
