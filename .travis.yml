@@ -1,10 +1,15 @@
-sudo: required
-dist: trusty
 language: node_js
-services:
-  - docker
-before_install: 
-  - docker build -t shreekarhegde/frontend -f Dockerfile.dev .
+node_js:
+  - "14"
+dist: trusty
+sudo: required
+branches:
+  only:
+  - master
+before_script:
+  - npm install -g @angular/cli
+script:
+- ng build --prod --base-href https://github.com/shreekarhegde/weather-app.git
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
